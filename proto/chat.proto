@@ -1,0 +1,11 @@
+syntax = "proto3";
+package proto.chat;
+option go_package = "github.com/grubermeister/trinity/server/gen/go/chat;chat";
+
+
+message ChatEvent {
+    string channel = 1; // e.g. "global", "zone:1"
+    string from = 2;
+    string body = 3;
+    int64 ts_ms = 4;
+}

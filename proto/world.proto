@@ -1,0 +1,31 @@
+syntax = "proto3";
+package proto.world;
+option go_package = "github.com/grubermeister/trinity/server/gen/go/world;world";
+
+
+message Vec2 { 
+    float x = 1; 
+    float y = 2; 
+}
+
+
+message Entity {
+    string id = 1;
+    Vec2 position = 2;
+    float rotation = 3;
+}
+
+
+message WorldDelta {
+    repeated Entity upserts = 1; // create/update
+    repeated string deletes = 2; // remove ids
+    int64 tick = 3; // server tick #
+}
+
+
+message Command {
+    string entity_id = 1;
+    oneof action {
+        Vec2 move = 10; // desired direction/target
+    }
+}

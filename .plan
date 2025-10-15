@@ -1,0 +1,22 @@
+BUILDING:
+
+Make sure you've got 
+    Go 1.25, 
+    Ninja 1.13, 
+    Dart w/ SDK 3.9 
+    Protobufs 32.1
+        protoc-gen-go 1.36
+        protoc-gen-go-grpc 1.5
+        protoc_plugin 23.0
+    gRPC 1.76
+
+installed.
+
+I believe the following architecture for the backend should be sufficient:
+
+Development:
+SQLite + Pebble, Genji + Ristretto
+
+Production:
+MySQL + Dolt + Redis, MongoDB + Memcached
+

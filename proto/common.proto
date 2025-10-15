@@ -1,0 +1,17 @@
+syntax = "proto3";
+package proto.common;
+option go_package = "github.com/grubermeister/trinity/server/gen/go/common;common";
+
+
+message Envelope {
+    string correlation_id = 1; // for request/response matching
+    int64 sent_unix_ms = 2; // client/server timestamps
+    oneof msg {
+        bytes ping = 10; // keepalive
+        proto.auth.LoginRequest login_req = 11;
+        proto.auth.LoginResponse login_res = 12;
+        proto.chat.ChatEvent chat_evt = 13;
+        proto.world.WorldDelta world_delta = 14;
+        proto.world.Command world_cmd = 15; // client->server commands
+    }
+}

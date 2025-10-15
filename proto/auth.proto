@@ -1,0 +1,16 @@
+syntax = "proto3";
+package proto.auth;
+option go_package = "github.com/grubermeister/trinity/server/gen/go/auth;auth";
+
+
+message LoginRequest {
+    string username = 1;
+    string password = 2; // (hash client-side if desired)
+}
+
+
+message LoginResponse {
+    bool ok = 1;
+    string token = 2; // bearer token used to re-auth on reconnect
+    string reason = 3;
+}
